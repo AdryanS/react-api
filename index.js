@@ -10,10 +10,10 @@ app.get('/filmes/filmes', iptvController.getVODStreams);
 app.get('/api/filmes/:categoryId', iptvController.getVODStreams)
 app.get('/test/:id', iptvController.getAllEPGLiveStreams)
 
-app.use(
+/*app.use(
     '/api',
     createProxyMiddleware({
       target: 'http://localhost:3080',
       changeOrigin: true,
     })
-);
+);*/
