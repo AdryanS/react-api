@@ -93,7 +93,7 @@ module.exports = class Player {
    * @param {string} [category]
    */
   getVODStreams (category) {
-    return this.execute('get_vod_streams', { category_id: category })
+    return this.execute('get_vod_streams', { category_id: category})
   }
 
   /**

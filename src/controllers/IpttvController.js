@@ -2,6 +2,12 @@ const player = require('../config/iptv-config')
 
 
 class IptvController {
+    getAccountInfo = (req, res) =>{
+      player
+          .getAccountInfo()
+          .then(response => res.json(response))
+
+    }
 
     getVODInfo = (req, res) => {
         const vodId = req.params.vodId;
