@@ -82,18 +82,25 @@ module.exports = class Player {
     return this.execute('get_vod_categories')
   }
 
+getSeriesCategories () {
+    return this.execute('get_series_categories')
+  }
   /**
    * @param {string} [category]
    */
   getLiveStreams (category) {
     return this.execute('get_live_streams', { category_id: category })
   }
+  
 
   /**
    * @param {string} [category]
    */
   getVODStreams (category) {
     return this.execute('get_vod_streams', { category_id: category})
+  }
+getSeries (category) {
+    return this.execute('get_series', { category_id: category})
   }
 
   /**
@@ -115,7 +122,20 @@ module.exports = class Player {
         return T
       })
   }
+getSerieInfo (id) {
+    if (!id) {
+      return Promise.reject(new Error('Serie Id not defined'))
+    }
 
+    return this.execute('get_serie_info', { serie_id: id })
+      .then(T => {
+        if (T.hasOwnProperty('info') && T.info.length === 0) {
+          return Promise.reject(new Error(`serie with id: ${id} not found`))
+        }
+
+        return T
+      })
+  }
   /**
    * GET short_epg for LIVE Streams (same as stalker portal, prints the next X EPG that will play soon)
    *
