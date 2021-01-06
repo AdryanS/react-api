@@ -46,7 +46,7 @@ getSeries = (req, res) =>{
     //const query =
     player
         .getSeries(categoryId)
-        .then(response => response.json()).then(json => json.filter(a => a.gender == genero)).then(response => res.json(response));
+        .then((response) => res.json(response));
          console.log('api/series called!');}
 
 
