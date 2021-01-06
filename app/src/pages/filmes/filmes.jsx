@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import api from './api';
+//import api from './api';
 
 class Filmes extends Component{
 
@@ -9,11 +9,14 @@ class Filmes extends Component{
     }
 
     async componentDidMount() {
-        const response = await api.get('');
+        await fetch("/filmes")
+        .then((response) => response.json())
+        .then(response => response.filter(filtro => filtro.category_id === "14"))
+        .then(response => this.setState({ filmes: response}), console.log)
 
-        console.log(response.data);
+        //console.log(response.data);
 
-        this.setState({ filmes: response.data});
+        //this.setState({ filmes: response.data});
     }
 
     render() {
