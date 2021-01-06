@@ -15,5 +15,6 @@
   "repository": {
     "url": "https://github.com/Izumi-No/react-api",
     "type": "git"
-  }
+  },
+  "scripts": {"start": "node index.js "}
 }
