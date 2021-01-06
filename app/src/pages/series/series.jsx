@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import api from './api';
+//import api from './api';
 
 class Series extends Component{
 
@@ -9,11 +9,9 @@ class Series extends Component{
     }
 
     async componentDidMount() {
-        const response = await api.get('');
-
-        console.log(response.data);
-
-        this.setState({ Series: response.data});
+        await fetch("/series")
+        .then((response) => response.json())
+        .then(response => this.setState({ Series: response}), console.log)
     }
 
     render() {
